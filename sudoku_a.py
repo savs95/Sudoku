@@ -20,8 +20,8 @@ def form_hash():# returns neighbor list
             for t in range (0,9):
                 if(t!=i):
                     hash1[(i,j)].append((t,j))
-            a=(i/3)*3 #sabse min deta hai i
-            b=(j/3)*3 #sabse min deta hai j
+            a=(i/3)*3 
+            b=(j/3)*3
             for t in range (a,a+3):
                 for p in range (b,b+3):
                     if (t,p) not in hash1[(i,j)]:
@@ -46,7 +46,6 @@ def bfs((i,j), hash1):
 def dfs((i,j), hash1):
     stack, bfs_order =[],[]
     stack=hash1[(i,j)][:]
-    #print i,j "saala"
     bfs_order.append((i,j))
     while len(stack)!=0:
         elem=stack[-1]
@@ -62,20 +61,16 @@ def dfs((i,j), hash1):
 def colouring (bfs_order,hash1):
     bfs_colour=[]
     elements=[]
-    #print len(bfs_order)
     colour=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
     for elem in bfs_order:
-        #print elem
-        #print len(bfs_colour)
         used_colours=[]
         if len(bfs_colour)==0:
             bfs_colour.append(1)
-            #temp_colour.append(1)
             elements.append(elem)
         else:
             for t in elements:
-                if elem in hash1[t]:#agar neighbour hai 
-                    used_colours.append(bfs_colour[elements.index(t)]) #daal do
+                if elem in hash1[t]: 
+                    used_colours.append(bfs_colour[elements.index(t)]) 
             for t in colour:
                 if t not in used_colours:
                     bfs_colour.append(t)
@@ -116,5 +111,5 @@ for i in range(9):
             continue    
         lst.append(m)
 
-print min(lst)      #gives max. no
-print min(lst2)     #gives no greater than 9
+print min(lst)     
+print min(lst2)   

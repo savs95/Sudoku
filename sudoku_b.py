@@ -50,8 +50,6 @@ def rule1(arr):
             for t in number:
                 if t not in temp_list and arr[i][j]==0:
                     possible_hash[(i,j)].append(t)
-                #else:
-                    #possible_hash[(i,j)].append(arr[i][j])
     for i in range(9):
         for j in range(9):
             if len (possible_hash[(i,j)])==1:
@@ -64,7 +62,6 @@ def rule1(arr):
 def rule2(arr):
     rule1(arr)
     possible_hash=rule1(arr)
-    #print possible_hash
     hash1=sudoku_a.form_hash()
     for i in range(9):
         for j in range(9):
@@ -73,34 +70,15 @@ def rule2(arr):
             temp_ref_elem=[]
             temp_ref_fin=[]
             for elem in neighbours:
-                temp_ref_elem=temp_ref_elem+possible_hash[elem] #concentrate
+                temp_ref_elem=temp_ref_elem+possible_hash[elem] 
             for t in temp_ref:
                 if t not in temp_ref_elem:
                     temp_ref_fin.append(t)   
             if (len(temp_ref_fin)==1):
-                #print "hello"
                 arr[i][j]=temp_ref_fin[0]
                 rule2(arr)         
                     
-                
-                    
-
-'''rule1(arr) 
-for i in arr:
-    print i      
-                  
-print "yo"
-            
-for i in arr:
-    print i      
-  
-    
-            
-        
-    
-'''
-
-    
+#example to solve sudoku                
 rule2(arr) 
 for i in arr:
     print i         
